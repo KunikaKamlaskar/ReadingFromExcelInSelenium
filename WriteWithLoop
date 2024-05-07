@@ -1,0 +1,66 @@
+package Day2;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class WriteWithLoop {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		//give location to create excel file
+				FileOutputStream file = new FileOutputStream(System.getProperty("user.dir") + "\\TestData\\WriteDataWithLoop.xlsx");
+				
+				//create new workbook inside file
+				XSSFWorkbook workbook = new XSSFWorkbook();
+				
+				//create sheet in workbook
+				XSSFSheet sheet = workbook.createSheet();
+				
+				Scanner sc= new Scanner(System.in);
+				//Creating rows and cells updating data with loop
+				for(int r=0;r<2;r++) {	//create row
+					XSSFRow currentRow = sheet.createRow(r);
+					
+					for(int c=0;c<2;c++) {	//create cell and update data
+						//currentRow.createCell(c).setCellValue("Java");
+						System.out.println("Enter values to put in excel");
+						String value= sc.next();
+						
+						currentRow.createCell(c).setCellValue(value);
+						
+					}
+				}
+				
+
+				workbook.write(file);
+				workbook.close();
+				file.close();
+				System.out.print("Writing is done");
+				
+				
+
+	}
+
+}
+
+
+
+//Output:
+ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
+Enter values to put in excel
+ABC
+Enter values to put in excel
+123
+Enter values to put in excel
+Jayva
+Enter values to put in excel
+Python
+Writing is done
