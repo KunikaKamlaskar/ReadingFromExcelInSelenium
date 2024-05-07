@@ -1,0 +1,63 @@
+package Day2;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+//write in Excel using Apache POI
+
+public class WriteDataIntoExcel {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		//give location to create excel file
+		FileOutputStream file = new FileOutputStream(System.getProperty("user.dir") + "\\TestData\\WriteData.xlsx");
+		
+		//create new workbook inside file
+		XSSFWorkbook workbook = new XSSFWorkbook();
+		
+		//create sheet in workbook
+		XSSFSheet sheet = workbook.createSheet();
+		
+		
+		//create single or multiple rows and columns(cells)
+		XSSFRow row1 = sheet.createRow(0);
+		
+                                                                		//XSSFCell cell = sheet.createRow(0).createCell(1);
+                                                                		//cell.setCellValue("Welcome");
+                                                                		//another way is 
+                                                                		//sheet.createRow(0).createCell(1).setCellValue("Welcome");
+		
+		row1.createCell(0).setCellValue("Hello");
+		row1.createCell(1).setCellValue("Hi");
+		row1.createCell(2).setCellValue("XYZ");
+		
+		
+		XSSFRow row2 = sheet.createRow(1);
+		row2.createCell(0).setCellValue("1");
+		row2.createCell(1).setCellValue("2");
+		row2.createCell(2).setCellValue("3");
+		
+		
+		//attach workbook with file
+		workbook.write(file);
+//close file and workbook after writing is done
+		workbook.close();
+		file.close();
+		System.out.print("Writing is done");
+
+	}
+
+}
+
+
+
+
+//OutPut:
+Writing is done
