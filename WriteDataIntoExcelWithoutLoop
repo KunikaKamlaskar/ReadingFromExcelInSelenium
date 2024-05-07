@@ -11,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 //write in Excel using Apache POI
 
-public class WriteDataIntoExcel {
+public class WriteDataIntoExcelWithoutLoop {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
